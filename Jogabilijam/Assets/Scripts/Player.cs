@@ -7,11 +7,11 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
-    private Rigidbody2D _rb;
+    private Rigidbody _rb;
     private Vector2 _movement;
     [SerializeField] private Transform _feetPos;
-    public bool isGrounded, isCrouching;
-    public float checkRadius;
+    public bool isGrounded, isCrouching, isMoving, canClimb;
+    public float checkGrounded;
     public LayerMask ground;
     private float movHor;
     private float movVer;
@@ -19,11 +19,8 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        _rb = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
+        _rb = GetComponent<Rigidbody>();
     }
-
-    // Update is called once per frame
     void Update()
     {
         Movement();
@@ -34,33 +31,48 @@ public class Player : MonoBehaviour
         {
             _rb.velocity = new Vector2(movHor * _speed * Time.deltaTime, _rb.velocity.y);
         }
+        if (!canClimb)
+        {
+            _rb.AddForce(Vector2.down * 19.8f);
+        }
     }
 
     private void Movement()
     {
-
         movHor = Input.GetAxis("Horizontal");
         movVer = Input.GetAxisRaw("Vertical");
-        isGrounded = Physics2D.OverlapCircle(_feetPos.position, checkRadius, ground);
+
+        isMoving = (movHor > 0.1f || movHor < 0.1f) ? true : false;
+
+        isGrounded = (Physics.Raycast(this.transform.position, Vector3.down, checkGrounded, ground));
 
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
-            _rb.velocity = Vector2.up * _jumpForce;
+            _rb.velocity = Vector3.up * _jumpForce;
         }
 
-        if (isGrounded && movVer < -0.5f)
-        {
-            _animator.SetBool("isCrouching", true);
-            isCrouching = true;
-        }
-        else
-        {
-            _animator.SetBool("isCrouching", false);
-            isCrouching = false;
-        }
+        isCrouching = (isGrounded && movVer < -0.5f) ? true : false;
+
         if (isCrouching)
         {
-            _rb.velocity = Vector2.zero;
+            _rb.velocity = Vector3.zero;
         }
+    }
+    public void FinishedClimb()
+    {
+        _animator.SetBool("isClimbing", false);
+    }
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            canClimb = true;
+            _rb.velocity = Vector3.zero;
+            _rb.AddForce(Vector2.up);
+        }
+    }
+    void OnCollisionExit(Collision other)
+    {
+        canClimb = false;
     }
 }
