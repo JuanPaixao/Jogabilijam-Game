@@ -9,7 +9,7 @@ Material:
   m_Name: Blusa
   m_Shader: {fileID: 4800000, guid: 9c6ece3d5ef8bb84db19471daaf6c788, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -62,16 +62,16 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _LightSmoothness: 0.484
-    - _LightThreshold: 0.674
+    - _LightSmoothness: 0.266
+    - _LightThreshold: 0.147
     - _MKEditorShowDetailBehavior: 0
     - _MKEditorShowDissolveBehavior: 0
     - _MKEditorShowLightBehavior: 1
-    - _MKEditorShowMainBehavior: 1
-    - _MKEditorShowOutlineBehavior: 0
+    - _MKEditorShowMainBehavior: 0
+    - _MKEditorShowOutlineBehavior: 1
     - _MKEditorShowReflectionBehavior: 0
     - _MKEditorShowRenderBehavior: 0
-    - _MKEditorShowRimBehavior: 0
+    - _MKEditorShowRimBehavior: 1
     - _MKEditorShowShadowBehavior: 1
     - _MKEditorShowSketchBehavior: 0
     - _MKEditorShowSpecularBehavior: 0
@@ -79,16 +79,16 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _OutlineSize: 0.0006
+    - _OutlineSize: 0.004
     - _Parallax: 0.02
-    - _RimIntensity: 0.455
-    - _RimSize: 0.61
-    - _RimSmoothness: 0.366
-    - _ShadowIntensity: 1.69
-    - _Shininess: 0.073
+    - _RimIntensity: 0.207
+    - _RimSize: 0.79
+    - _RimSmoothness: 0.235
+    - _ShadowIntensity: 0.653
+    - _Shininess: 0.143
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SpecularIntensity: 0.105
+    - _SpecularIntensity: 0.088
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1

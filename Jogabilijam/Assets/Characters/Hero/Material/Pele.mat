@@ -66,33 +66,33 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _LightSmoothness: 0
-    - _LightThreshold: 0.3
+    - _LightSmoothness: 0.42
+    - _LightThreshold: 0.413
     - _MKEditorShowDetailBehavior: 0
     - _MKEditorShowDissolveBehavior: 0
-    - _MKEditorShowLightBehavior: 0
+    - _MKEditorShowLightBehavior: 1
     - _MKEditorShowMainBehavior: 0
     - _MKEditorShowOutlineBehavior: 1
     - _MKEditorShowReflectionBehavior: 0
     - _MKEditorShowRenderBehavior: 0
     - _MKEditorShowRimBehavior: 1
-    - _MKEditorShowShadowBehavior: 0
+    - _MKEditorShowShadowBehavior: 1
     - _MKEditorShowSketchBehavior: 0
-    - _MKEditorShowSpecularBehavior: 0
+    - _MKEditorShowSpecularBehavior: 1
     - _MKEditorShowTranslucentBehavior: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _OutlineSize: 0.00004
+    - _OutlineSize: 0.004
     - _Parallax: 0.02
-    - _RimIntensity: 0.249
-    - _RimSize: 1.27
-    - _RimSmoothness: 0.172
-    - _ShadowIntensity: 0
-    - _Shininess: 0.026
+    - _RimIntensity: 0.155
+    - _RimSize: 0.84
+    - _RimSmoothness: 0.117
+    - _ShadowIntensity: 1.651
+    - _Shininess: 0.033
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SpecularIntensity: 0.067
+    - _SpecularIntensity: 0.127
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
