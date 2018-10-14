@@ -19,4 +19,13 @@ public class PlayerAnimations : MonoBehaviour
         _animator.SetBool("isCrouching", _player.isCrouching);
         _animator.SetFloat("VerticalMovement", Mathf.Abs(_player.movVer));
     }
+    public void isJumping(bool jump)
+    {
+        _animator.SetBool("isJumping", jump);
+    }
+    public void isFalling(bool fall)
+    {
+        _animator.SetBool("isFalling", fall);
+        _player.isFalling = fall;
+    }
 }
