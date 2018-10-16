@@ -28,4 +28,8 @@ public class PlayerAnimations : MonoBehaviour
         _animator.SetBool("isFalling", fall);
         _player.isFalling = fall;
     }
+    public void isMoving(bool mov)
+    {
+        _animator.SetBool("isMoving", mov);
+    }
 }

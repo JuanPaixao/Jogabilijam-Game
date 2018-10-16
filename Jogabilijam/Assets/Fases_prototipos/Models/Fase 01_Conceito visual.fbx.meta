@@ -1,0 +1,291 @@
+fileFormatVersion: 2
+guid: fc6928c1073dc2e479dc05816e865081
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Cano 2
+    100002: Canos
+    100004: "Ch\xE3o"
+    100006: Compartimento
+    100008: Compartimento 2
+    100010: Compartimento 3
+    100012: Deposito
+    100014: //RootNode
+    100016: fios
+    100018: fios 2
+    100020: Grandes canos
+    100022: Ralo
+    100024: Ralo.001
+    100026: Ralo.002
+    100028: Sirene
+    100030: Sirene 2
+    100032: Tunel
+    400000: Cano 2
+    400002: Canos
+    400004: "Ch\xE3o"
+    400006: Compartimento
+    400008: Compartimento 2
+    400010: Compartimento 3
+    400012: Deposito
+    400014: //RootNode
+    400016: fios
+    400018: fios 2
+    400020: Grandes canos
+    400022: Ralo
+    400024: Ralo.001
+    400026: Ralo.002
+    400028: Sirene
+    400030: Sirene 2
+    400032: Tunel
+    2100000: metro_decor
+    2100002: pipes
+    2100004: ground_part
+    2100006: walls
+    2300000: Cano 2
+    2300002: Canos
+    2300004: "Ch\xE3o"
+    2300006: Compartimento
+    2300008: Compartimento 2
+    2300010: Compartimento 3
+    2300012: Deposito
+    2300014: fios
+    2300016: fios 2
+    2300018: Grandes canos
+    2300020: Ralo
+    2300022: Ralo.001
+    2300024: Ralo.002
+    2300026: Sirene
+    2300028: Sirene 2
+    2300030: Tunel
+    3300000: Cano 2
+    3300002: Canos
+    3300004: "Ch\xE3o"
+    3300006: Compartimento
+    3300008: Compartimento 2
+    3300010: Compartimento 3
+    3300012: Deposito
+    3300014: fios
+    3300016: fios 2
+    3300018: Grandes canos
+    3300020: Ralo
+    3300022: Ralo.001
+    3300024: Ralo.002
+    3300026: Sirene
+    3300028: Sirene 2
+    3300030: Tunel
+    4300000: Ralo.002
+    4300002: Ralo.001
+    4300004: Compartimento 3
+    4300006: Compartimento 2
+    4300008: Deposito
+    4300010: Compartimento
+    4300012: Sirene 2
+    4300014: Sirene
+    4300016: Canos
+    4300018: Ralo
+    4300020: fios 2
+    4300022: fios
+    4300024: Cano 2
+    4300026: Grandes canos
+    4300028: "Ch\xE3o"
+    4300030: Tunel
+    7400000: Ralo.002|decor_low|Take 001|BaseLayer
+    7400002: Ralo.002|decor_low|Take 001|BaseLayer.001
+    7400004: Ralo.002|decor_low|Take 001|BaseLayer.002
+    7400006: Ralo.002|ground_low|Take 001|BaseLayer
+    7400008: Ralo.002|pipes_low|Take 001|BaseLayer
+    7400010: Ralo.002|walls_low|Take 001|BaseLayer
+    7400012: Ralo.001|decor_low|Take 001|BaseLayer
+    7400014: Ralo.001|decor_low|Take 001|BaseLayer.001
+    7400016: Ralo.001|decor_low|Take 001|BaseLayer.002
+    7400018: Ralo.001|ground_low|Take 001|BaseLayer
+    7400020: Ralo.001|pipes_low|Take 001|BaseLayer
+    7400022: Ralo.001|walls_low|Take 001|BaseLayer
+    7400024: Compartimento 3|decor_low|Take 001|BaseLayer
+    7400026: Compartimento 3|decor_low|Take 001|BaseLayer.001
+    7400028: Compartimento 3|decor_low|Take 001|BaseLayer.002
+    7400030: Compartimento 3|ground_low|Take 001|BaseLayer
+    7400032: Compartimento 3|pipes_low|Take 001|BaseLayer
+    7400034: Compartimento 3|walls_low|Take 001|BaseLayer
+    7400036: Compartimento 2|decor_low|Take 001|BaseLayer
+    7400038: Compartimento 2|decor_low|Take 001|BaseLayer.001
+    7400040: Compartimento 2|decor_low|Take 001|BaseLayer.002
+    7400042: Compartimento 2|ground_low|Take 001|BaseLayer
+    7400044: Compartimento 2|pipes_low|Take 001|BaseLayer
+    7400046: Compartimento 2|walls_low|Take 001|BaseLayer
+    7400048: Deposito|decor_low|Take 001|BaseLayer
+    7400050: Deposito|decor_low|Take 001|BaseLayer.001
+    7400052: Deposito|decor_low|Take 001|BaseLayer.002
+    7400054: Deposito|ground_low|Take 001|BaseLayer
+    7400056: Deposito|pipes_low|Take 001|BaseLayer
+    7400058: Deposito|walls_low|Take 001|BaseLayer
+    7400060: Compartimento|decor_low|Take 001|BaseLayer
+    7400062: Compartimento|decor_low|Take 001|BaseLayer.001
+    7400064: Compartimento|decor_low|Take 001|BaseLayer.002
+    7400066: Compartimento|ground_low|Take 001|BaseLayer
+    7400068: Compartimento|pipes_low|Take 001|BaseLayer
+    7400070: Compartimento|walls_low|Take 001|BaseLayer
+    7400072: Sirene 2|decor_low|Take 001|BaseLayer
+    7400074: Sirene 2|decor_low|Take 001|BaseLayer.001
+    7400076: Sirene 2|decor_low|Take 001|BaseLayer.002
+    7400078: Sirene 2|ground_low|Take 001|BaseLayer
+    7400080: Sirene 2|pipes_low|Take 001|BaseLayer
+    7400082: Sirene 2|walls_low|Take 001|BaseLayer
+    7400084: Sirene|decor_low|Take 001|BaseLayer
+    7400086: Sirene|decor_low|Take 001|BaseLayer.001
+    7400088: Sirene|decor_low|Take 001|BaseLayer.002
+    7400090: Sirene|ground_low|Take 001|BaseLayer
+    7400092: Sirene|pipes_low|Take 001|BaseLayer
+    7400094: Sirene|walls_low|Take 001|BaseLayer
+    7400096: Canos|decor_low|Take 001|BaseLayer
+    7400098: Canos|decor_low|Take 001|BaseLayer.001
+    7400100: Canos|decor_low|Take 001|BaseLayer.002
+    7400102: Canos|ground_low|Take 001|BaseLayer
+    7400104: Canos|pipes_low|Take 001|BaseLayer
+    7400106: Canos|walls_low|Take 001|BaseLayer
+    7400108: Ralo|decor_low|Take 001|BaseLayer
+    7400110: Ralo|decor_low|Take 001|BaseLayer.001
+    7400112: Ralo|decor_low|Take 001|BaseLayer.002
+    7400114: Ralo|ground_low|Take 001|BaseLayer
+    7400116: Ralo|pipes_low|Take 001|BaseLayer
+    7400118: Ralo|walls_low|Take 001|BaseLayer
+    7400120: fios 2|decor_low|Take 001|BaseLayer
+    7400122: fios 2|decor_low|Take 001|BaseLayer.001
+    7400124: fios 2|decor_low|Take 001|BaseLayer.002
+    7400126: fios 2|ground_low|Take 001|BaseLayer
+    7400128: fios 2|pipes_low|Take 001|BaseLayer
+    7400130: fios 2|walls_low|Take 001|BaseLayer
+    7400132: fios|decor_low|Take 001|BaseLayer
+    7400134: fios|decor_low|Take 001|BaseLayer.001
+    7400136: fios|decor_low|Take 001|BaseLayer.002
+    7400138: fios|ground_low|Take 001|BaseLayer
+    7400140: fios|pipes_low|Take 001|BaseLayer
+    7400142: fios|walls_low|Take 001|BaseLayer
+    7400144: Cano 2|decor_low|Take 001|BaseLayer
+    7400146: Cano 2|decor_low|Take 001|BaseLayer.001
+    7400148: Cano 2|decor_low|Take 001|BaseLayer.002
+    7400150: Cano 2|ground_low|Take 001|BaseLayer
+    7400152: Cano 2|pipes_low|Take 001|BaseLayer
+    7400154: Cano 2|walls_low|Take 001|BaseLayer
+    7400156: Grandes canos|decor_low|Take 001|BaseLayer
+    7400158: Grandes canos|decor_low|Take 001|BaseLayer.001
+    7400160: Grandes canos|decor_low|Take 001|BaseLayer.002
+    7400162: Grandes canos|ground_low|Take 001|BaseLayer
+    7400164: Grandes canos|pipes_low|Take 001|BaseLayer
+    7400166: Grandes canos|walls_low|Take 001|BaseLayer
+    7400168: "Ch\xE3o|decor_low|Take 001|BaseLayer"
+    7400170: "Ch\xE3o|decor_low|Take 001|BaseLayer.001"
+    7400172: "Ch\xE3o|decor_low|Take 001|BaseLayer.002"
+    7400174: "Ch\xE3o|ground_low|Take 001|BaseLayer"
+    7400176: "Ch\xE3o|pipes_low|Take 001|BaseLayer"
+    7400178: "Ch\xE3o|walls_low|Take 001|BaseLayer"
+    7400180: Tunel|decor_low|Take 001|BaseLayer
+    7400182: Tunel|decor_low|Take 001|BaseLayer.001
+    7400184: Tunel|decor_low|Take 001|BaseLayer.002
+    7400186: Tunel|ground_low|Take 001|BaseLayer
+    7400188: Tunel|pipes_low|Take 001|BaseLayer
+    7400190: Tunel|walls_low|Take 001|BaseLayer
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ground_part
+    second: {fileID: 2100000, guid: 54acdc2f357972c45a7c549ff314857b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metro_decor
+    second: {fileID: 2100000, guid: 562ac7c658e1d3c40831a5ce186db173, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pipes
+    second: {fileID: 2100000, guid: 0e9931072173d6047ab8861958d68ebb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: walls
+    second: {fileID: 2100000, guid: dd9c6889c277f954484eb018ca5930c1, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

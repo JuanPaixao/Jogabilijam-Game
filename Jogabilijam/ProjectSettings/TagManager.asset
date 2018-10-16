@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Wall
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -17,9 +18,9 @@ TagManager:
   - 
   - PostProcessing
   - Ground
-  - 
-  - 
-  - 
+  - Climb
+  - Player
+  - Enemy
   - 
   - 
   - 

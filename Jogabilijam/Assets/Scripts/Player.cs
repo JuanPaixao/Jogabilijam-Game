@@ -5,26 +5,26 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    [SerializeField] private float _speed;
+    [SerializeField] private float _speed, auxSpeed;
     [SerializeField] private float _jumpForce;
     private Vector2 _movement;
-    [SerializeField] private Transform _feetPos, _upperHeadPos;
-    public bool isGrounded, isCrouching, isMoving, canClimb, isJumping, isPreparingJump,isFalling;
+    [SerializeField] private Transform _feetPos, _upperHeadPos, _transform;
+    public bool isGrounded, isCrouching, isMoving, canClimb, isJumping, isPreparingJump, isFalling;
     public float checkGrounded, checkDistanceLedge, fallSpeed;
-    public LayerMask ground;
+    public LayerMask ground, climb;
     public float movHor, movVer;
     private Animator _animator;
     public string movingDirection;
-    private RaycastHit _hit;
+    private RaycastHit _hit, _hitClimb;
     private Vector3 move;
     private Rigidbody _rb;
-    private Transform _transform;
 
-    private Vector3 moveDirection = Vector3.zero;
+    private Vector3 direction;
     private PlayerAnimations _playerAnimations;
 
     void Start()
     {
+        auxSpeed = _speed;
         _playerAnimations = GetComponent<PlayerAnimations>();
         _transform = GetComponent<Transform>();
         _rb = GetComponent<Rigidbody>();
@@ -41,9 +41,6 @@ public class Player : MonoBehaviour
                 _playerAnimations.isFalling(true);
             }
         }
-    }
-    private void FixedUpdate()
-    {
         if (!isPreparingJump && !isFalling)
         {
             if (!isCrouching || isJumping)
@@ -55,10 +52,19 @@ public class Player : MonoBehaviour
                 _rb.velocity = new Vector3(movHor * _speed / 2 * Time.deltaTime, _rb.velocity.y, 0);
             }
         }
-        if (!canClimb)
+        if (isJumping && isMoving)
         {
-            _rb.AddForce(Vector2.down * 19.8f);
+            _speed = auxSpeed + 20;
         }
+        else
+        {
+            _speed = auxSpeed;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        _rb.AddForce(Vector2.down * 19.8f);
     }
 
     private void Movement()
@@ -70,13 +76,13 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (isJumping != true && !Physics.Raycast(_upperHeadPos.position, Vector3.up, out _hit, 0.5f, ground))
+            if (isJumping != true && !Physics.Raycast(_upperHeadPos.position, Vector3.up, out _hit, 0.5f, ground) && !canClimb)
             {
                 _playerAnimations.isJumping(true);
             }
         }
-
-        isMoving = (movHor == 1 || movHor == -1) ? true : false;
+        isMoving = (movHor != 0) ? true : false;
+        _playerAnimations.isMoving(isMoving);
         if (movHor > 0.1)
         {
             movingDirection = "right";
@@ -92,7 +98,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log(_hit.transform.name);
         }
-        isCrouching = ((isGrounded && movVer < -0.01f) || Physics.Raycast(_upperHeadPos.position, Vector3.up, out _hit, 0.75f, ground)) ? true : false;
+        isCrouching = ((isGrounded && movVer < -0.01f) || Physics.Raycast(_upperHeadPos.position, Vector3.up, out _hit, 0.5f, ground)) ? true : false;
 
         if (movVer < -0.25f)
         {
@@ -103,26 +109,22 @@ public class Player : MonoBehaviour
             StartCoroutine(JumpCoroutine());
         }
     }
-    public void FinishedClimb()
-    {
-        _animator.SetBool("isClimbing", false);
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        canClimb = true;
-        //set character velocity to 0;
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        canClimb = false;
-    }
     public void Jump()
     {
         if (isJumping != true && !Physics.Raycast(_upperHeadPos.position, Vector3.up, out _hit, 0.5f, ground))
         {
-            isJumping = true;
-            isPreparingJump = false;
-            _rb.velocity = Vector3.up * _jumpForce * Time.fixedDeltaTime;
+            if (isMoving)
+            {
+                isJumping = true;
+                isPreparingJump = false;
+                _rb.velocity = Vector3.up * _jumpForce * Time.fixedDeltaTime;
+            }
+            else
+            {
+                isJumping = true;
+                isPreparingJump = false;
+                _rb.velocity = Vector3.up * _jumpForce * 0.852f * Time.fixedDeltaTime;
+            }
         }
     }
     public void PreparingJump()
@@ -132,7 +134,7 @@ public class Player : MonoBehaviour
     }
     private IEnumerator JumpCoroutine()
     {
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.1f);
         if (isGrounded)
         {
             isJumping = false;
