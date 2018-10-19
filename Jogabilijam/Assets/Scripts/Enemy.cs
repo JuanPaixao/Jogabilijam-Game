@@ -88,7 +88,7 @@ public class Enemy : MonoBehaviour
     }
     public IEnumerator BackToNormal()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.25f);
 
         light.color = Color.yellow;
         light.intensity = 40;

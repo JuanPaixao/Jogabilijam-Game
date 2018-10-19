@@ -18,12 +18,14 @@ public class Player : MonoBehaviour
     private RaycastHit _hit, _hitClimb;
     private Vector3 move;
     private Rigidbody _rb;
-
     private Vector3 direction;
     private PlayerAnimations _playerAnimations;
+    private AudioSource _audioSource;
+    [SerializeField] private AudioClip[] _audioClip;
 
     void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         auxSpeed = _speed;
         _playerAnimations = GetComponent<PlayerAnimations>();
         _transform = GetComponent<Transform>();
@@ -41,6 +43,19 @@ public class Player : MonoBehaviour
                 _playerAnimations.isFalling(true);
             }
         }
+        if (isJumping && isMoving)
+        {
+            _speed = auxSpeed + 20;
+        }
+        else
+        {
+            _speed = auxSpeed;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        _rb.AddForce(Vector2.down * 15.5f);
         if (!isPreparingJump && !isFalling)
         {
             if (!isCrouching || isJumping)
@@ -54,17 +69,11 @@ public class Player : MonoBehaviour
         }
         if (isJumping && isMoving)
         {
-            _speed = auxSpeed + 20;
+            if (movHor > 0.01f || movHor < 0.01f)
+            {
+                _rb.velocity = new Vector3(movHor * _speed * 1.5f * Time.deltaTime, _rb.velocity.y * 1.001f, 0);
+            }
         }
-        else
-        {
-            _speed = auxSpeed;
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        _rb.AddForce(Vector2.down * 19.8f);
     }
 
     private void Movement()
@@ -98,7 +107,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log(_hit.transform.name);
         }
-        isCrouching = ((isGrounded && movVer < -0.01f) || Physics.Raycast(_upperHeadPos.position, Vector3.up, out _hit, 0.5f, ground)) ? true : false;
+        isCrouching = ((isGrounded && movVer < -0.01f) || Physics.Raycast(_upperHeadPos.position, Vector3.up, out _hit, 0.75f, ground)) ? true : false;
 
         if (movVer < -0.25f)
         {
@@ -108,9 +117,16 @@ public class Player : MonoBehaviour
         {
             StartCoroutine(JumpCoroutine());
         }
+        if (isGrounded && isFalling)
+        {
+            StartCoroutine(FallingCoroutine());
+        }
+        
     }
     public void Jump()
     {
+        _audioSource.PlayOneShot(_audioClip[2], 0.25f);
+
         if (isJumping != true && !Physics.Raycast(_upperHeadPos.position, Vector3.up, out _hit, 0.5f, ground))
         {
             if (isMoving)
@@ -118,19 +134,20 @@ public class Player : MonoBehaviour
                 isJumping = true;
                 isPreparingJump = false;
                 _rb.velocity = Vector3.up * _jumpForce * Time.fixedDeltaTime;
+
             }
             else
             {
                 isJumping = true;
                 isPreparingJump = false;
-                _rb.velocity = Vector3.up * _jumpForce * 0.852f * Time.fixedDeltaTime;
+                _rb.velocity = Vector3.up * _jumpForce * 0.952f * Time.fixedDeltaTime;
             }
         }
     }
     public void PreparingJump()
     {
-        isPreparingJump = true;
         _rb.velocity = Vector3.zero;
+        isPreparingJump = true;
     }
     private IEnumerator JumpCoroutine()
     {
@@ -148,5 +165,27 @@ public class Player : MonoBehaviour
     public void SetSpeedToZero()
     {
         _rb.velocity = Vector3.zero;
+    }
+    public void StepLeftCrouch()
+    {
+        _audioSource.PlayOneShot(_audioClip[0], 0.8f);
+    }
+    public void StepRightCrouch()
+    {
+        _audioSource.PlayOneShot(_audioClip[1], 0.8f);
+    }
+    public void StepLeftUp()
+    {
+        _audioSource.PlayOneShot(_audioClip[0], 1f);
+    }
+    public void StepRightUp()
+    {
+        _audioSource.PlayOneShot(_audioClip[1], 1f);
+    }
+    public IEnumerator FallingCoroutine()
+    {
+        yield return new WaitForSeconds(0.2f);
+        isFalling = false;
+        _playerAnimations.isFalling(false);
     }
 }

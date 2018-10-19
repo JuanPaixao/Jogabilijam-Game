@@ -63,7 +63,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 1
     - _LightSmoothness: 0.379
-    - _LightThreshold: 0.258
+    - _LightThreshold: 0.273
     - _MKEditorShowDetailBehavior: 0
     - _MKEditorShowDissolveBehavior: 0
     - _MKEditorShowLightBehavior: 1
