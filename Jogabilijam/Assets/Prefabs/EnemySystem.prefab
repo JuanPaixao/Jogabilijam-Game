@@ -171,9 +171,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4603288289781622}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: EnemySystem
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -549,7 +549,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4847538029569234}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pistola
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -717,7 +717,7 @@ GameObject:
   - component: {fileID: 4484413198960684}
   - component: {fileID: 33945702137904082}
   - component: {fileID: 23851381846546664}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pistola.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1020,7 +1020,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4515302617118918}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: group13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1795,7 +1795,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1391075305053498}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 5.064, y: 6.6982613, z: -11.267344}
+  m_LocalPosition: {x: 6.73, y: 6.6982613, z: -11.267344}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4603288289781622}
@@ -2160,7 +2160,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1276677406229264}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 17.13, y: 6.6982613, z: -11.26589}
+  m_LocalPosition: {x: 13.71, y: 6.6982613, z: -11.26589}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4603288289781622}
@@ -2286,7 +2286,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1770286812449950}
   m_LocalRotation: {x: -0.038279586, y: 0.0045556426, z: -0.0010071512, w: 0.99925625}
-  m_LocalPosition: {x: -0.0005148704, y: 1.375627, z: 0.004446362}
+  m_LocalPosition: {x: -0.0005145393, y: 1.375627, z: 0.0044482406}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4621024191658234}
@@ -2356,7 +2356,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1134770367092020}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.328341, y: -1.2782612, z: 11.267876}
+  m_LocalPosition: {x: 41.7, y: -5.57, z: 11.267876}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4298834901761420}
@@ -3061,7 +3061,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 40
+  m_Intensity: 20
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10

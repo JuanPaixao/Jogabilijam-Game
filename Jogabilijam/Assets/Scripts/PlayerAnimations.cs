@@ -32,4 +32,8 @@ public class PlayerAnimations : MonoBehaviour
     {
         _animator.SetBool("isMoving", mov);
     }
+    public void isCaptured(bool cap)
+    {
+        _animator.SetBool("isCaptured",cap);
+    }
 }

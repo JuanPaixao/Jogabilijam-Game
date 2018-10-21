@@ -2,15 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretRange : MonoBehaviour {
+public class TurretRange : MonoBehaviour
+{
+    [SerializeField] private Animator _animator;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (other.GetComponent<Player>().isHiding != true)
+            {
+                other.GetComponent<Player>().isCaptured = true;
+                StartCoroutine(Stop());
+            }
+        }
+    }
+    private IEnumerator Stop()
+    {
+        yield return new WaitForSeconds(0.06f);
+        _animator.enabled = false;
+    }
 }

@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
     private Transform _eye, _eye2;
     void Start()
     {
+        _player = GameObject.Find("Hero").GetComponent<Player>();
         auxViewRange = viewRange;
         _transform = GetComponent<Transform>();
         _rbEnemy = GetComponent<Rigidbody>();
@@ -49,7 +50,7 @@ public class Enemy : MonoBehaviour
         if (playerCaptured)
         {
             light.color = Color.red;
-            light.intensity = 100;
+            light.intensity = 30;
             isPlayerOnRange = true;
         }
     }
@@ -91,7 +92,7 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(1.25f);
 
         light.color = Color.yellow;
-        light.intensity = 40;
+        light.intensity = 20;
         isPlayerOnRange = false;
         _animator.SetBool("isPlayerOnRange", false);
     }
@@ -111,6 +112,7 @@ public class Enemy : MonoBehaviour
         if (isPlayerOnRange && !playerCaptured)
         {
             playerCaptured = true;
+            _player.isCaptured = true;
             _animator.SetBool("PlayerCaptured", true);
         }
     }
@@ -124,7 +126,7 @@ public class Enemy : MonoBehaviour
                 {
                     if (_hit.collider.CompareTag("Player"))
                     {
-                        light.intensity = 70;
+                        light.intensity = 25;
                         light.color = Color.red;
                         light.range = 15;
                         viewRange = auxViewRange + 3.5f;
@@ -138,7 +140,7 @@ public class Enemy : MonoBehaviour
             {
                 viewRange = auxViewRange;
                 light.color = Color.yellow;
-                light.intensity = 40;
+                light.intensity = 20;
                 light.range = 10;
                 isPlayerOnRange = false;
                 _animator.SetBool("isPlayerOnRange", false);
@@ -153,7 +155,7 @@ public class Enemy : MonoBehaviour
                     if (_hit.collider.CompareTag("Player"))
                     {
                         light.color = Color.red;
-                        light.intensity = 70;
+                        light.intensity = 25;
                         light.range = 15;
                         viewRange = auxViewRange + 3.5f;
                         isWalking = false;
@@ -166,7 +168,7 @@ public class Enemy : MonoBehaviour
             {
                 viewRange = auxViewRange;
                 light.color = Color.yellow;
-                light.intensity = 40;
+                light.intensity = 20;
                 light.range = 10;
                 isPlayerOnRange = false;
                 _animator.SetBool("isPlayerOnRange", false);

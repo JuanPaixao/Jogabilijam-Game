@@ -9,9 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: c331d8d9da0ea774db23ebf28d456811
   - enabled: 1
-    path: Assets/Scenes/Fase_01 - Esgoto.unity
+    path: Assets/Scenes/Fase 01 - Esgoto.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/Fase 02_segundoandar.unity
+    path: Assets/Scenes/Fase 02 - Segundo Andar.unity
     guid: 1db70637537e44a4cb008832a25acc1f
+  - enabled: 1
+    path: Assets/Scenes/Fase 03 - Terceiro Andar.unity
+    guid: ff2f6c26027e2f4409710effcfbf3c26
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 3e666f4bfc5bd05419c50eac500f5db9
+  - enabled: 1
+    path: Assets/Scenes/End.unity
+    guid: c36bd74836d96ef45b09e89b22e08cda
   m_configObjects: {}

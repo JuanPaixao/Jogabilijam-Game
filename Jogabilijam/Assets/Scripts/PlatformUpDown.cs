@@ -18,6 +18,13 @@ public class PlatformUpDown : MonoBehaviour
             StartCoroutine(ChangeDirectionPlatform());
         }
     }
+    private void OnTriggerExit(Collider other)
+    {
+        if (upOrDown == "up")
+        {
+            _animator.SetBool("PlatUp", false);
+        }
+    }
 
     public IEnumerator ChangeDirectionPlatform()
     {

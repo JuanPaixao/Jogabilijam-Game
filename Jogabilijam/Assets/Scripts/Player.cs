@@ -9,9 +9,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float _jumpForce;
     private Vector2 _movement;
     [SerializeField] private Transform _feetPos, _upperHeadPos, _transform;
-    public bool isGrounded, isCrouching, isMoving, canClimb, isJumping, isPreparingJump, isFalling;
+    public bool isGrounded, isCrouching, isMoving, isHiding, isJumping, isPreparingJump, isFalling, isCaptured;
     public float checkGrounded, checkDistanceLedge, fallSpeed;
-    public LayerMask ground, climb;
+    public LayerMask ground;
     public float movHor, movVer;
     private Animator _animator;
     public string movingDirection;
@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        isCaptured = false;
         _audioSource = GetComponent<AudioSource>();
         auxSpeed = _speed;
         _playerAnimations = GetComponent<PlayerAnimations>();
@@ -34,22 +35,36 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        Movement();
-        Debug.DrawRay(_upperHeadPos.position, Vector3.up, Color.yellow, 2f);
-        if (isJumping)
+        isGrounded = (Physics.Raycast(_feetPos.position, Vector3.down, checkGrounded, ground));
+        if (!isCaptured)
         {
-            if ((Physics.Raycast(_feetPos.position, Vector3.down, checkGrounded * 1.75f, ground)))
+            Movement();
+            if (isJumping)
             {
-                _playerAnimations.isFalling(true);
+                if ((Physics.Raycast(_feetPos.position, Vector3.down, checkGrounded * 1.75f, ground)))
+                {
+                    _playerAnimations.isFalling(true);
+                }
             }
-        }
-        if (isJumping && isMoving)
-        {
-            _speed = auxSpeed + 20;
+            if (isJumping && isMoving)
+            {
+                _speed = auxSpeed + 20;
+            }
+            else
+            {
+                _speed = auxSpeed;
+            }
         }
         else
         {
-            _speed = auxSpeed;
+            _playerAnimations.isCaptured(true);
+            isMoving = false;
+            isFalling = false;
+            isCrouching = false;
+            _playerAnimations.isMoving(false);
+            _playerAnimations.isFalling(false);
+            _rb.isKinematic = true;
+            StartCoroutine(GameOver());
         }
     }
 
@@ -81,11 +96,10 @@ public class Player : MonoBehaviour
         movHor = Input.GetAxisRaw("Horizontal");
         movVer = Input.GetAxisRaw("Vertical");
         transform.position = new Vector3(this.transform.position.x, this.transform.position.y, 0);
-        isGrounded = (Physics.Raycast(_feetPos.position, Vector3.down, checkGrounded, ground));
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (isJumping != true && !Physics.Raycast(_upperHeadPos.position, Vector3.up, out _hit, 0.5f, ground) && !canClimb)
+            if (isJumping != true && !Physics.Raycast(_upperHeadPos.position, Vector3.up, out _hit, 0.5f, ground))
             {
                 _playerAnimations.isJumping(true);
             }
@@ -109,10 +123,6 @@ public class Player : MonoBehaviour
         }
         isCrouching = ((isGrounded && movVer < -0.01f) || Physics.Raycast(_upperHeadPos.position, Vector3.up, out _hit, 0.75f, ground)) ? true : false;
 
-        if (movVer < -0.25f)
-        {
-            canClimb = false;
-        }
         if (isJumping)
         {
             StartCoroutine(JumpCoroutine());
@@ -121,7 +131,7 @@ public class Player : MonoBehaviour
         {
             StartCoroutine(FallingCoroutine());
         }
-        
+
     }
     public void Jump()
     {
@@ -168,11 +178,11 @@ public class Player : MonoBehaviour
     }
     public void StepLeftCrouch()
     {
-        _audioSource.PlayOneShot(_audioClip[0], 0.8f);
+        _audioSource.PlayOneShot(_audioClip[0], 0.9f);
     }
     public void StepRightCrouch()
     {
-        _audioSource.PlayOneShot(_audioClip[1], 0.8f);
+        _audioSource.PlayOneShot(_audioClip[1], 0.9f);
     }
     public void StepLeftUp()
     {
@@ -187,5 +197,10 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         isFalling = false;
         _playerAnimations.isFalling(false);
+    }
+    private IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(0.5f);
+        GameObject.Find("GameManager").GetComponent<GameManager>().PlayerCaptured();
     }
 }
