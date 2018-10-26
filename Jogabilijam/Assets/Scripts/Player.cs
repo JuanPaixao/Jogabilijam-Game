@@ -201,6 +201,7 @@ public class Player : MonoBehaviour
     private IEnumerator GameOver()
     {
         yield return new WaitForSeconds(0.5f);
+        GameObject.Find("GameManager").GetComponent<GameManager>().StartInverseFade();
         GameObject.Find("GameManager").GetComponent<GameManager>().PlayerCaptured();
     }
 }

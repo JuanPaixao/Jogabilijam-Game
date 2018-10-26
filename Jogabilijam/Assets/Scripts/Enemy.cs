@@ -20,8 +20,29 @@ public class Enemy : MonoBehaviour
     public Light light;
     [SerializeField]
     private Transform _eye, _eye2;
+    [SerializeField] private AudioClip[] _audioClip;
+    private AudioSource _audioSource;
+
+    public void ScanningArea()
+    {
+        if (Vector3.Distance(_player.transform.position, this.transform.position) <= 12f)
+        {
+            _audioSource.PlayOneShot(_audioClip[0], 0.3f);
+            Debug.Log("Scanning");
+        }
+    }
+    public void TargetLocated()
+    {
+        if (Vector3.Distance(_player.transform.position, this.transform.position) <= 12f)
+        {
+            _audioSource.PlayOneShot(_audioClip[1], 0.45f);
+            Debug.Log("TargetLocated");
+        }
+    }
+
     void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         _player = GameObject.Find("Hero").GetComponent<Player>();
         auxViewRange = viewRange;
         _transform = GetComponent<Transform>();
@@ -172,6 +193,34 @@ public class Enemy : MonoBehaviour
                 light.range = 10;
                 isPlayerOnRange = false;
                 _animator.SetBool("isPlayerOnRange", false);
+            }
+        }
+    }
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.name == "Hero")
+        {
+            if (_hit.collider == null)
+            {
+                light.intensity = 25;
+                light.color = Color.red;
+                light.range = 15;
+                viewRange = auxViewRange + 3.5f;
+                isPlayerOnRange = true;
+                isWalking = false;
+                _animator.SetBool("isPlayerOnRange", true);
+                if (_lookingDirection == "left")
+                {
+                    _lookingDirection = "right";
+                    _direction = "right";
+                }
+                else
+                {
+                    _lookingDirection = "left";
+                    _direction = "left";
+                }
+                _transform.transform.eulerAngles = (_direction == "right") ? new Vector3(_transform.transform.eulerAngles.x, -280, _transform.transform.eulerAngles.z) :
+new Vector3(_transform.transform.eulerAngles.x, -460, 0);
             }
         }
     }

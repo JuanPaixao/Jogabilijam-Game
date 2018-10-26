@@ -14,9 +14,12 @@ public class GameManager : MonoBehaviour
     public static int sceneNumber;
     private Scene sceneName;
     public GameObject gameOverSound;
+    public static string language;
+    public Camera cam1, cam2;
 
     void Start()
     {
+        Debug.Log(language);
         sceneName = SceneManager.GetActiveScene();
         if (sceneName.name == "Menu")
         {
@@ -34,9 +37,18 @@ public class GameManager : MonoBehaviour
         {
             sceneNumber = 3;
         }
-        else if (sceneName.name == ("Ending"))
+        else if (sceneName.name == ("End"))
         {
             sceneNumber = 4;
+
+            if (language == "Portugues")
+            {
+                cutscene[0].SetActive(true);
+            }
+            else
+            {
+                cutscene[2].SetActive(true);
+            }
         }
         if (sceneName.name == "GameOver")
         {
@@ -56,6 +68,11 @@ public class GameManager : MonoBehaviour
         Debug.Log(sceneNumber);
     }
 
+    public void SetLanguage(string setLang)
+    {
+        language = setLang;
+        SceneManager.LoadSceneAsync("Menu");
+    }
     public void ZoomIn()
     {
         StartCoroutine(ZoomInCoroutine());
@@ -93,8 +110,17 @@ public class GameManager : MonoBehaviour
             cutscene[3].SetActive(false);
             cutscene[2].SetActive(false);
             cutscene[1].SetActive(false);
-            cutscene[0].SetActive(true);
-            yield return new WaitForSecondsRealtime(44f);
+            if (language == "Portugues")
+            {
+                cutscene[0].SetActive(true);
+            }
+            else
+            {
+                cutscene[4].SetActive(true);
+            }
+
+
+            yield return new WaitForSecondsRealtime(47f);
             SceneManager.LoadSceneAsync("Fase 01 - Esgoto");
         }
     }
@@ -107,6 +133,20 @@ public class GameManager : MonoBehaviour
             opacity -= 0.1f;
             yield return new WaitForSeconds(0.025f);
         }
+    }
+    public IEnumerator InverseFadeRoutine()
+    {
+        float opacity = fade.color.a;
+        while (opacity <= 100)
+        {
+            fade.color = new Color(this.fade.color.r, this.fade.color.g, this.fade.color.b, opacity);
+            opacity += 0.1f;
+            yield return new WaitForSeconds(0.025f);
+        }
+    }
+    public void StartInverseFade()
+    {
+        StartCoroutine(InverseFadeRoutine());
     }
     public void LoadNextScene(string Scene)
     {
@@ -144,5 +184,19 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(58f);
         SceneManager.LoadSceneAsync("Menu");
+    }
+    public void ChangeCamera()
+    {
+        cam1.enabled = false;
+        cam2.enabled = true;
+        Rigidbody player = GameObject.Find("Hero").GetComponent<Rigidbody>();
+        player.isKinematic = true;
+    }
+    public void ReturnToMainCamera()
+    {
+        cam1.enabled = true;
+        cam2.enabled = false;
+        Rigidbody player = GameObject.Find("Hero").GetComponent<Rigidbody>();
+        player.isKinematic = false;
     }
 }
